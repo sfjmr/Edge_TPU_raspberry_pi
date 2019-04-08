@@ -25,7 +25,8 @@ def main():
     engine = edgetpu.detection.engine.DetectionEngine(args.model)
 
     with picamera.PiCamera() as camera:
-        camera.resolution = (640, 480)
+        #camera.resolution = (640, 480)
+        camera.resolution = (300, 300)
         camera.framerate = 30
         _, width, height, channels = engine.get_input_tensor_shape()
         camera.start_preview()
