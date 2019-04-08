@@ -42,6 +42,8 @@ def main():
                 stream.truncate()
                 stream.seek(0)
                 input = np.frombuffer(stream.getvalue(), dtype=np.uint8)
+                print("input.shape")
+                print(input.shape)
                 start_ms = time.time()
                 #results = engine.ClassifyWithInputTensor(input, top_k=1)
                 results = engine.DetectWithInputTensor(input, threshold=0.1, top_k=3)
