@@ -30,6 +30,8 @@ def main():
         camera.resolution = (300, 300)
         camera.framerate = 30
         _, width, height, channels = engine.get_input_tensor_shape()
+        print("width, height, channels")
+        print(width, height, channels)
         camera.start_preview()
         try:
             stream = io.BytesIO()
