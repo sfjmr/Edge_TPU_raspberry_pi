@@ -7,7 +7,7 @@ import numpy as np
 import picamera
 
 import edgetpu.classification.engine
-
+import edgetpu.detection.engine
 
 def main():
     parser = argparse.ArgumentParser()
@@ -21,7 +21,8 @@ def main():
         pairs = (l.strip().split(maxsplit=1) for l in f.readlines())
         labels = dict((int(k), v) for k, v in pairs)
 
-    engine = edgetpu.classification.engine.ClassificationEngine(args.model)
+    #engine = edgetpu.classification.engine.ClassificationEngine(args.model)
+    engine = edgetpu.detection.engine.DetectionEngine(args.model)
 
     with picamera.PiCamera() as camera:
         camera.resolution = (640, 480)
@@ -38,11 +39,16 @@ def main():
                 stream.seek(0)
                 input = np.frombuffer(stream.getvalue(), dtype=np.uint8)
                 start_ms = time.time()
-                results = engine.ClassifyWithInputTensor(input, top_k=1)
+                #results = engine.ClassifyWithInputTensor(input, top_k=1)
+                results = engine.DetectWithInputTensor(input, threshold=0.1, top_k=3)
                 elapsed_ms = time.time() - start_ms
                 if results:
-                    camera.annotate_text = "%s %.2f\n%.2fms" % (
-                        labels[results[0][0]], results[0][1], elapsed_ms*1000.0)
+                    #結果を表示
+                    #camera.annotate_text = "%s %.2f\n%.2fms" % (
+                    #    labels[results[0][0]], results[0][1], elapsed_ms*1000.0)
+                    pass
+
+
         finally:
             camera.stop_preview()
 
