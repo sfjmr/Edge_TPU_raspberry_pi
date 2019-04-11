@@ -40,6 +40,8 @@ def main():
                 start_ms = time.time()
                 print("input.shape")
                 print(input.shape) #150528
+                print("engine.required_input_array_size()")
+                print(engine.required_input_array_size())
                 results = engine.ClassifyWithInputTensor(input, top_k=1)
                 elapsed_ms = time.time() - start_ms
                 if results:

@@ -21,8 +21,8 @@ def main():
         pairs = (l.strip().split(maxsplit=1) for l in f.readlines())
         labels = dict((int(k), v) for k, v in pairs)
 
-    engine = edgetpu.classification.engine.ClassificationEngine(args.model)
-    #engine = edgetpu.detection.engine.DetectionEngine(args.model)
+    #engine = edgetpu.classification.engine.ClassificationEngine(args.model)
+    engine = edgetpu.detection.engine.DetectionEngine(args.model)
     print("engine.required_input_array_size()")
     print(engine.required_input_array_size())
     with picamera.PiCamera() as camera:
