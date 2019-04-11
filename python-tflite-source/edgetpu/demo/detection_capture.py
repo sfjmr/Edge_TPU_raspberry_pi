@@ -26,10 +26,10 @@ def main():
     print("engine.required_input_array_size()")
     print(engine.required_input_array_size()) #270000
     with picamera.PiCamera() as camera:
-        #camera.resolution = (640, 480)
+        camera.resolution = (640, 480)
         #300 300 291840
         #270 270 291840
-        camera.resolution = (270, 270)
+        #camera.resolution = (270, 270)
         camera.framerate = 30 #20でも変化なし
         _, width, height, channels = engine.get_input_tensor_shape()
         print("width, height, channels")
@@ -40,7 +40,7 @@ def main():
             for foo in camera.capture_continuous(stream,
                                                  format='rgb',
                                                  use_video_port=True,
-                                                 resize=(width, height)):
+                                                 resize=(300, 300)):
                 stream.truncate()
                 stream.seek(0)
                 input = np.frombuffer(stream.getvalue(), dtype=np.uint8)
