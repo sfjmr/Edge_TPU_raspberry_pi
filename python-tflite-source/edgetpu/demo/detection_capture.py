@@ -30,7 +30,7 @@ def main():
         #300 300 291840
         #270 270 291840
         camera.resolution = (270, 270)
-        camera.framerate = 20#30
+        camera.framerate = 30 #20でも変化なし
         _, width, height, channels = engine.get_input_tensor_shape()
         print("width, height, channels")
         print(width, height, channels)
