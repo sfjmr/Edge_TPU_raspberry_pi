@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>edgetpu.basic.basic_engine &mdash; Coral Edge TPU API Beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="edgetpu.classification.engine" href="edgetpu.classification.engine.html" />
+    <link rel="prev" title="Coral Edge TPU API reference" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Coral Edge TPU API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">edgetpu.basic.basic_engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edgetpu.classification.engine.html">edgetpu.classification.engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edgetpu.detection.engine.html">edgetpu.detection.engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edgetpu.learn.imprinting.engine.html">edgetpu.learn.imprinting.engine</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Coral Edge TPU API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>edgetpu.basic.basic_engine</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/edgetpu.basic.basic_engine.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-edgetpu.basic.basic_engine">
+<span id="edgetpu-basic-basic-engine"></span><h1>edgetpu.basic.basic_engine<a class="headerlink" href="#module-edgetpu.basic.basic_engine" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="edgetpu.basic.basic_engine.BasicEngine">
+<em class="property">class </em><code class="descclassname">edgetpu.basic.basic_engine.</code><code class="descname">BasicEngine</code><span class="sig-paren">(</span><em>model_path</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine" title="Permalink to this definition">¶</a></dt>
+<dd><p>A general inference engine that can be extended for specific usecases.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_path</strong> – Path to the model you want to use.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.RunInference">
+<code class="descname">RunInference</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.RunInference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs inference with given input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input</strong> – 1-D numpy.array. Flattened input tensor.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(latency, output_tensors). Latency is milliseconds in float while output_tensors
+is 1-D numpy.array. If there are multiple output tensors, it will be
+compressed into a 1-D array. You can use get_all_output_tensors_sizes,
+get_num_of_output_tensors and get_output_tensor_size to calculate the offset for
+each tensor.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.get_all_output_tensors_sizes">
+<code class="descname">get_all_output_tensors_sizes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.get_all_output_tensors_sizes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets sizes of output tensors.</p>
+<p>Each output tenor is a 1-D numpy.array. This function returns the sizes of all
+Arrays.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Numpy.array represents the sizes of output tensors.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.get_driver_version">
+<em class="property">static </em><code class="descname">get_driver_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.get_driver_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.get_inference_time">
+<code class="descname">get_inference_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.get_inference_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the latency of the last inference.</p>
+<p>This can be used by higher level engines for debugging.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A float.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.get_input_tensor_shape">
+<code class="descname">get_input_tensor_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.get_input_tensor_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets shape of required input tensor.</p>
+<p>For models trained for image &nbsp;classification / detection, it’s always (1, width,
+height, channels). After flatten, the 1-D array with size width * height *
+channels is the required input for RunInference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">1-D numpy.array.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.get_num_of_output_tensors">
+<code class="descname">get_num_of_output_tensors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.get_num_of_output_tensors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets number of output tensors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing number of output tensors.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.get_output_tensor_size">
+<code class="descname">get_output_tensor_size</code><span class="sig-paren">(</span><em>tensor_index</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.get_output_tensor_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets size of specific output tensor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tensor_index</strong> – integer, the index of the output tensor.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the size of the output tensor.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.get_raw_output">
+<code class="descname">get_raw_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.get_raw_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets <cite>output_tensors</cite> of last inference.</p>
+<p>This can be used by higher level engines for debugging.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A numpy.array.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.model_path">
+<code class="descname">model_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.model_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the path of the model loaded in the engine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A string representing the model file’s path.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.required_input_array_size">
+<code class="descname">required_input_array_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.required_input_array_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks required size of input array of RunInference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the size of the input array used for <cite>RunInference</cite>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.basic.basic_engine.BasicEngine.total_output_array_size">
+<code class="descname">total_output_array_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.basic.basic_engine.BasicEngine.total_output_array_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets expected size of output array returned by <cite>RunInference</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the size of <cite>output_tensors</cite> returned by <cite>RunInference</cite>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="edgetpu.classification.engine.html" class="btn btn-neutral float-right" title="edgetpu.classification.engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Coral Edge TPU API reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

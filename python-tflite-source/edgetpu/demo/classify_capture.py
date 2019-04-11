@@ -38,6 +38,8 @@ def main():
                 stream.seek(0)
                 input = np.frombuffer(stream.getvalue(), dtype=np.uint8)
                 start_ms = time.time()
+                print("input.shape")
+                print(input.shape)
                 results = engine.ClassifyWithInputTensor(input, top_k=1)
                 elapsed_ms = time.time() - start_ms
                 if results:

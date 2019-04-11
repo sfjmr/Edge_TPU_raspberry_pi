@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>edgetpu.detection.engine &mdash; Coral Edge TPU API Beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="edgetpu.learn.imprinting.engine" href="edgetpu.learn.imprinting.engine.html" />
+    <link rel="prev" title="edgetpu.classification.engine" href="edgetpu.classification.engine.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Coral Edge TPU API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="edgetpu.basic.basic_engine.html">edgetpu.basic.basic_engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edgetpu.classification.engine.html">edgetpu.classification.engine</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">edgetpu.detection.engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edgetpu.learn.imprinting.engine.html">edgetpu.learn.imprinting.engine</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Coral Edge TPU API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>edgetpu.detection.engine</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/edgetpu.detection.engine.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-edgetpu.detection.engine">
+<span id="edgetpu-detection-engine"></span><h1>edgetpu.detection.engine<a class="headerlink" href="#module-edgetpu.detection.engine" title="Permalink to this headline">¶</a></h1>
+<p>Detection Engine used for detection tasks.</p>
+<dl class="class">
+<dt id="edgetpu.detection.engine.DetectionCandidate">
+<em class="property">class </em><code class="descclassname">edgetpu.detection.engine.</code><code class="descname">DetectionCandidate</code><span class="sig-paren">(</span><em>label_id</em>, <em>score</em>, <em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionCandidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data structure represents one detection candidate.</p>
+<dl class="attribute">
+<dt id="edgetpu.detection.engine.DetectionCandidate.label_id">
+<code class="descname">label_id</code><a class="headerlink" href="#edgetpu.detection.engine.DetectionCandidate.label_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>int, label id.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="edgetpu.detection.engine.DetectionCandidate.score">
+<code class="descname">score</code><a class="headerlink" href="#edgetpu.detection.engine.DetectionCandidate.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>float, score of the candidate.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="edgetpu.detection.engine.DetectionCandidate.bounding_box">
+<code class="descname">bounding_box</code><a class="headerlink" href="#edgetpu.detection.engine.DetectionCandidate.bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>numpy.array, describing the bouding box with format
+[[x1, y1], [x2, y2]]. Where (x1,y1) is the top-left corner and (x2,y2)
+is the bottom-right corner of the bounding box. The type of element can
+be either float or integer, depending on relative_coord passed by user.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">bounding_box</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">label_id</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">score</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="edgetpu.detection.engine.DetectionEngine">
+<em class="property">class </em><code class="descclassname">edgetpu.detection.engine.</code><code class="descname">DetectionEngine</code><span class="sig-paren">(</span><em>model_path</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Engine used for detection tasks.</p>
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.DetectWithImage">
+<code class="descname">DetectWithImage</code><span class="sig-paren">(</span><em>img</em>, <em>threshold=0.1</em>, <em>top_k=3</em>, <em>keep_aspect_ratio=False</em>, <em>relative_coord=True</em>, <em>resample=0</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.DetectWithImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detects object with given PIL image object.</p>
+<p>This interface assumes the loaded model is trained for object detection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>img</strong> – PIL image object.</li>
+<li><strong>threshold</strong> – float, threshold to filter results. Default value = 0.1.</li>
+<li><strong>top_k</strong> – keep top k candidates if there are many candidates with score
+exceeds given threshold. By default we keep top 3.</li>
+<li><strong>keep_aspect_ratio</strong> – bool, whether to keep aspect ratio when down-sampling
+the input image. By default it’s false.</li>
+<li><strong>relative_coord</strong> – whether to converts coordinates to relative value. By
+default is true, all coordinates will be coverted to a float number
+in range [0, 1] according to width/height. Otherwise coordinates will
+be integers representing number of pixels.</li>
+<li><strong>resample</strong> – An optional resampling filter on image resizing. By default it
+is PIL.Image.NEAREST. Complex filter such as PIL.Image.BICUBIC will
+bring extra latency, and slightly better accuracy.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of DetectionCandidate.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code> – when model’s input tensor format is invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.DetectWithInputTensor">
+<code class="descname">DetectWithInputTensor</code><span class="sig-paren">(</span><em>input_tensor</em>, <em>threshold=0.1</em>, <em>top_k=3</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.DetectWithInputTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detects objects with raw input.</p>
+<p>This interface allows user to process image outside the engine for
+efficiency concern.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_tensor</strong> – numpy.array represents the input tensor.</li>
+<li><strong>threshold</strong> – float, threshold to filter results. Default value = 0.1.</li>
+<li><strong>top_k</strong> – keep top k candidates if there are many candidates with score
+exceeds given threshold. By default we keep top 3.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of DetectionCandidate.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – when input param is invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.RunInference">
+<code class="descname">RunInference</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.RunInference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.get_all_output_tensors_sizes">
+<code class="descname">get_all_output_tensors_sizes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.get_all_output_tensors_sizes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="edgetpu.detection.engine.DetectionEngine.get_driver_version">
+<em class="property">static </em><code class="descname">get_driver_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.get_driver_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.get_inference_time">
+<code class="descname">get_inference_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.get_inference_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.get_input_tensor_shape">
+<code class="descname">get_input_tensor_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.get_input_tensor_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.get_num_of_output_tensors">
+<code class="descname">get_num_of_output_tensors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.get_num_of_output_tensors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.get_output_tensor_size">
+<code class="descname">get_output_tensor_size</code><span class="sig-paren">(</span><em>tensor_index</em><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.get_output_tensor_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.get_raw_output">
+<code class="descname">get_raw_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.get_raw_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.model_path">
+<code class="descname">model_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.model_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.required_input_array_size">
+<code class="descname">required_input_array_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.required_input_array_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edgetpu.detection.engine.DetectionEngine.total_output_array_size">
+<code class="descname">total_output_array_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#edgetpu.detection.engine.DetectionEngine.total_output_array_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="edgetpu.learn.imprinting.engine.html" class="btn btn-neutral float-right" title="edgetpu.learn.imprinting.engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="edgetpu.classification.engine.html" class="btn btn-neutral" title="edgetpu.classification.engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
