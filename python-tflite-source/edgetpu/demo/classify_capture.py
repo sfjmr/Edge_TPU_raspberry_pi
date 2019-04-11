@@ -39,7 +39,7 @@ def main():
                 input = np.frombuffer(stream.getvalue(), dtype=np.uint8)
                 start_ms = time.time()
                 print("input.shape")
-                print(input.shape)
+                print(input.shape) #150528
                 results = engine.ClassifyWithInputTensor(input, top_k=1)
                 elapsed_ms = time.time() - start_ms
                 if results:

@@ -26,8 +26,8 @@ def main():
     print("engine.required_input_array_size()")
     print(engine.required_input_array_size())
     with picamera.PiCamera() as camera:
-        #camera.resolution = (640, 480)
-        camera.resolution = (300, 300)
+        camera.resolution = (640, 480)
+        #camera.resolution = (300, 300)
         camera.framerate = 30
         _, width, height, channels = engine.get_input_tensor_shape()
         print("width, height, channels")
