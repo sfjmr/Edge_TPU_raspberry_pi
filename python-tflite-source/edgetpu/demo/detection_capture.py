@@ -22,12 +22,12 @@ def main():
         labels = dict((int(k), v) for k, v in pairs)
 
     #engine = edgetpu.classification.engine.ClassificationEngine(args.model)
-    engine = edgetpu.detection.engine.DetectionEngine(args.model)
+    engine = edget pu.detection.engine.DetectionEngine(args.model)
     print("engine.required_input_array_size()")
     print(engine.required_input_array_size())
     with picamera.PiCamera() as camera:
-        camera.resolution = (640, 480)
-        #camera.resolution = (300, 300)
+        #camera.resolution = (640, 480)
+        camera.resolution = (300, 900)
         camera.framerate = 30
         _, width, height, channels = engine.get_input_tensor_shape()
         print("width, height, channels")
