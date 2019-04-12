@@ -40,7 +40,7 @@ def main():
             for foo in camera.capture_continuous(stream,
                                                  format='rgb',
                                                  use_video_port=True,
-                                                 resize=(300, 300)):
+                                                 resize=(300, 300)):#うまくresizeされてないのが問題?
                 stream.truncate()
                 stream.seek(0)
                 input = np.frombuffer(stream.getvalue(), dtype=np.uint8)
