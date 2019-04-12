@@ -34,6 +34,7 @@ def main():
         _, width, height, channels = engine.get_input_tensor_shape()
         print("width, height, channels")
         print(width, height, channels)
+        print("??")
         camera.start_preview()
         try:
             stream = io.BytesIO()
