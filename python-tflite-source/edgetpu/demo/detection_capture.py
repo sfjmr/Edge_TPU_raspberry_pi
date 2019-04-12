@@ -40,8 +40,9 @@ def main():
             for foo in camera.capture_continuous(stream,
                                                  format='rgb',
                                                  use_video_port=True,
-                                                 resize=(260, 260)):#うまくresizeされてないのが問題?
+                                                 resize=(320, 240)):#うまくresizeされてないのが問題?
                 #300 300 -> 291840
+                #288 272 -> 235008
                 #256 256 -> 196608
                 #200 200 -> 139776
                 stream.truncate()
