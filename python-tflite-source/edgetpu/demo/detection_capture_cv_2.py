@@ -48,9 +48,9 @@ def main():
     parser.add_argument(
             '--threshold', help="threshold to filter results.", default=0.3)
     parser.add_argument(
-            '--width', help="Resolution width.", default=300)
+            '--width', help="Resolution width.", default=800)
     parser.add_argument(
-            '--height', help="Resolution height.", default=300)
+            '--height', help="Resolution height.", default=800)
     args = parser.parse_args()
 
     # Initialize window.
