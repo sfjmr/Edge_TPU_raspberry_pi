@@ -44,13 +44,13 @@ def main():
     parser.add_argument(
             '--label', help='File path of label file.', default='coco_labels.txt')#required=True, 
     parser.add_argument(
-            '--top_k', help="keep top k candidates.", default=3)
+            '--top_k', help="keep top k candidates.", default=5)
     parser.add_argument(
-            '--threshold', help="threshold to filter results.", default=0.5)
+            '--threshold', help="threshold to filter results.", default=0.3)
     parser.add_argument(
-            '--width', help="Resolution width.", default=640)
+            '--width', help="Resolution width.", default=300)
     parser.add_argument(
-            '--height', help="Resolution height.", default=480)
+            '--height', help="Resolution height.", default=300)
     args = parser.parse_args()
 
     # Initialize window.
