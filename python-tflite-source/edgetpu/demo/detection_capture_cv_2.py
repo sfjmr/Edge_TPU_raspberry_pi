@@ -16,7 +16,8 @@ import numpy as np
 import picamera
 from picamera.array import PiRGBArray
 
-from edgetpu.detection.engine import DetectionEngine
+import edgetpu.detection.engine
+#from edgetpu.detection.engine import DetectionEngine
 
 import cv2
 import PIL
@@ -57,7 +58,7 @@ def main():
     cv2.moveWindow(WINDOW_NAME, 100, 200)
 
     # Initialize engine.
-    engine = DetectionEngine(args.model)
+    engine = edgetpu.detection.engine.DetectionEngine(args.model)
     labels = ReadLabelFile(args.label) if args.label else None
 
     # Generate random colors.
