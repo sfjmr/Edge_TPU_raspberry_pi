@@ -40,9 +40,9 @@ def ReadLabelFile(file_path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-            '--model', help='File path of Tflite model.', required=True, default='mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite')
+            '--model', help='File path of Tflite model.', default='mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite')#required=True, 
     parser.add_argument(
-            '--label', help='File path of label file.', required=True, default='coco_labels.txt')
+            '--label', help='File path of label file.', default='coco_labels.txt')#required=True, 
     parser.add_argument(
             '--top_k', help="keep top k candidates.", default=3)
     parser.add_argument(
