@@ -76,7 +76,7 @@ def main():
         rawCapture = PiRGBArray(camera)
 
         # allow the camera to warmup
-        time.sleep(0.1)
+        #time.sleep(0.1)
 
         try:
             for frame in camera.capture_continuous(rawCapture,
