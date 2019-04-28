@@ -4,8 +4,8 @@ import numpy as np
 import cv2
 import time
 from PIL import Image
-from edgetpu.detection.engine import DetectionEngine
-
+#from edgetpu.detection.engine import DetectionEngine
+import edgetpu.detection.engine
 
 # Function to read labels from text files.
 def ReadLabelFile(file_path):
@@ -46,7 +46,7 @@ def main():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, camera_height)
 
     # Initialize engine.
-    engine = DetectionEngine(args.model)
+    engine = edgetpu.detection.engine.DetectionEngine(args.model)
     labels = ReadLabelFile(args.label) if args.label else None
 
     while True:
