@@ -46,6 +46,7 @@ def main():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, camera_height)
 
     # Initialize engine.
+    print(args.model)
     engine = edgetpu.detection.engine.DetectionEngine(args.model)
     labels = ReadLabelFile(args.label) if args.label else None
 
